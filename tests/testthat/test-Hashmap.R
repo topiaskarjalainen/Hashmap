@@ -7,8 +7,18 @@ test_that("keys and values", {
   expect_equal(keys(hashmap(list(a=1,b=2))),
                c("a", "b")
                )
-  expect_equal(
-    values(hashmap(list(a=1,b=2))),
+  expect_equivalent(
+    unlist(values(hashmap(list(a=1,b=2)))),
     c(1,2)
   )
 })
+
+h <- hashmap(list(a=1,b=2))
+delete(h, c("a"))
+test_that("deletes stuff", {
+  expect_equal(keys(h),
+    c("b")
+  )
+})
+rm(list = c("h"))
+

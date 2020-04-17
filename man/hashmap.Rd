@@ -2,13 +2,13 @@
 % Please edit documentation in R/Hashmap.R
 \name{hashmap}
 \alias{hashmap}
-\title{Create the hashmap class}
+\title{Create hamap with values}
 \usage{
-hashmap(initial = NULL)
+hashmap(values)
 }
 \arguments{
-\item{initial}{Optional list of keys and values to be included in the hashmap}
+\item{values}{a list of values}
 }
 \description{
-Create the hashmap class
+Create hamap with values
 }

@@ -4,12 +4,12 @@
 \alias{add.hashmap}
 \title{Add values to hashmap}
 \usage{
-\method{add}{hashmap}(where, ...)
+\method{add}{hashmap}(where, what)
 }
 \arguments{
 \item{where}{hashmap where you want to add keys and values}
 
-\item{...}{Added stuff}
+\item{what}{Added stuff}
 }
 \description{
 Add values to hashmap

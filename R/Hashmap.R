@@ -19,7 +19,7 @@ hashmap <- function(values) {
 #' Create generic
 #'
 #' @export
-add <- function(where, ...){
+add <- function(where, what){
   UseMethod("add")
 }
 
@@ -32,34 +32,34 @@ is.hashmap <- function(x) inherits(x, "hashmap")
 #' Add values to hashmap
 #'
 #' @param where hashmap where you want to add keys and values
-#' @param stuff Added stuff
+#' @param what Added stuff
 #'
 #' @export
-add.hashmap <- function(where, stuff) {
+add.hashmap <- function(where, what) {
   if(!is.hashmap(where))
     stop("parameter where must inherit hashmap")
 
-  list2env(stuff, envir = where)
+  list2env(what, envir = where)
 }
 
-rm <- function(x) {
-  UseMethod("rm")
+#' Generic
+#'
+#' @export
+delete <- function(where, what) {
+  UseMethod("delete")
 }
 
 #' Remove elements from hashmap
 #'
 #' @param where hashmap from where you want to remove keys and values
-#' @param ... deleted stuff
-rm.hashmap <- function(where, ...){
-  if(!is.list(...)) {
-    args <- list(...)
-  } else {
-    args <- ...
-  }
+#' @param what deleted stuff
+#'
+#' @export
+delete.hashmap <- function(where, what){
   if(!is.hashmap(where))
     stop("parameter where must inherit hashmap")
 
-  rm(list = args, envir = where)
+  rm(list = what, envir = where)
 }
 
 #' Return keys od a hashmap
@@ -87,15 +87,9 @@ has.key <- function(where, key) {
 #' @param where hashmap
 #' @export
 values <- function(where) {
-  get(ls(where), envir = where)
+  mget(ls(where), envir = where)
 }
 
-#' Generic
-#'
-#' @export
-print <- function(x) {
-  UseMethod("print")
-}
 
 #' Prints a hashmap
 #'
